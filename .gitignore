@@ -1,0 +1,33 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+
+# Node
+node_modules/
+**/node_modules/
+
+# VS Code
+.vscode/
+
+# ML / models (très important)
+Models/
+phenogeno_ensemble_deploy/
+*.h5
+*.pkl
+*.pt
+*.onnx
+*.safetensors
+
+# Data files (très lourds)
+*.csv
+
+# builds
+build/
+dist/
+
+# logs
+*.log

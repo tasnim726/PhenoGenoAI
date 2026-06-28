@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, rgba(0, 229, 255, 0.12), transparent 55%),
+    linear-gradient(180deg, #05080f 0%, #040611 65%, #0c1b3a 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+.light body {
+  color-scheme: light;
+  background: radial-gradient(circle at top, rgba(0, 229, 255, 0.08), transparent 55%),
+    linear-gradient(180deg, #f5f9ff 0%, #e8f0ff 60%, #d8e6ff 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='360' viewBox='0 0 900 360'%3E%3Cpath d='M40 180 Q140 80 240 180 T440 180 T640 180 T840 180' stroke='%2300E5FF' stroke-width='1.4' fill='none'/%3E%3Cpath d='M40 180 Q140 280 240 180 T440 180 T640 180 T840 180' stroke='%2300E5FF' stroke-width='1.4' fill='none'/%3E%3Ccircle cx='140' cy='120' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='240' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='340' cy='240' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='440' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='540' cy='120' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='640' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='740' cy='240' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='140' cy='240' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='240' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='340' cy='120' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='440' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='540' cy='240' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='640' cy='180' r='4' fill='%2300E5FF'/%3E%3Ccircle cx='740' cy='120' r='4' fill='%2300E5FF'/%3E%3C/svg%3E");
+  background-repeat: repeat, repeat, repeat;
+  background-position: center, center, center;
+  background-size: 80px 80px, 80px 80px, 640px 220px;
+  pointer-events: none;
+}
+
+.light body::before {
+  opacity: 0.06;
+}
+
+.light .text-white,
+.light .text-slate-900 {
+  color: #000 !important;
+}
+
+.light .text-slate-700,
+.light .text-slate-600,
+.light .text-slate-500,
+.light .text-slate-400,
+.light .text-slate-300,
+.light .text-slate-200 {
+  color: #3a4a7a !important;
+}
+
+.light .light\:text-slate-700,
+.light .light\:text-slate-600,
+.light .light\:text-slate-500,
+.light .light\:text-slate-400,
+.light .light\:text-slate-300,
+.light .light\:text-slate-200 {
+  color: #3a4a7a !important;
+}
+
+.light .bg-white,
+.light .bg-white\/5,
+.light .bg-black\/30,
+.light .bg-black\/40,
+.light .bg-black\/20,
+.light .bg-slate-50,
+.light .bg-slate-100,
+.light .bg-slate-200,
+.light .bg-slate-300,
+.light .bg-slate-400,
+.light .bg-slate-500,
+.light .bg-slate-600,
+.light .bg-slate-700,
+.light .bg-slate-800,
+.light .bg-slate-900,
+.light .light\:bg-white,
+.light .light\:bg-white\/5,
+.light .light\:bg-slate-200,
+.light .light\:bg-slate-300,
+.light .light\:bg-slate-700,
+.light .light\:bg-slate-900 {
+  background-color: #e6edff !important;
+}
+
+.light .border-white\/10,
+.light .border-white\/20,
+.light .border-white\/30,
+.light .border-slate-200,
+.light .border-slate-300,
+.light .border-slate-400,
+.light .border-slate-500,
+.light .border-slate-600,
+.light .border-slate-700,
+.light .border-slate-800,
+.light .border-slate-900,
+.light .light\:border-slate-200,
+.light .light\:border-slate-300,
+.light .light\:border-slate-400,
+.light .light\:border-slate-500 {
+  border-color: #3a4a7a !important;
+}
+
+.light .text-electric,
+.light .text-cyan-400,
+.light .text-cyan-500,
+.light .text-cyan-300,
+.light .text-cyan-200 {
+  color: #000080 !important;
+}
+
+.light .bg-electric,
+.light .bg-cyan-500,
+.light .bg-cyan-400,
+.light .bg-cyan-300,
+.light .bg-cyan-200 {
+  background-color: #000080 !important;
+}
+
+.light .border-electric,
+.light .border-cyan-500,
+.light .border-cyan-400,
+.light .border-cyan-300,
+.light .border-cyan-200 {
+  border-color: #000080 !important;
+}
+
+.light .text-midnight {
+  color: #ffffff !important;
+}
+
+.dna-grid {
+  background-image: radial-gradient(rgba(0, 229, 255, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}

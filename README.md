@@ -1,19 +1,19 @@
-#  PhenoGenoAI — Plateforme d'Analyse Génomique Intelligente
+# 🧬 PhenoGenoAI — Plateforme d'Analyse Génomique Intelligente
 
-Bienvenue dans le dépôt de **PhenoGenoAI** ! 
+Bienvenue dans le dépôt de **PhenoGenoAI** ! 🚀
 
 Ce projet est une application web full-stack innovante qui utilise l'Intelligence Artificielle (IA) pour faire le pont entre la médecine clinique et la génétique. Elle permet d'identifier des anomalies génétiques potentielles chez un patient à partir de la description simple de ses symptômes.
 
 ---
 
-## Le Projet Expliqué Simplement 
+## 💡 Le Projet Expliqué Simplement (Pour les débutants)
 
-###  Qu'est-ce que le Phénotype et le Génotype ?
+### 🧬 Qu'est-ce que le Phénotype et le Génotype ?
 Pour comprendre ce projet, imaginez le corps humain comme une maison :
 *   **Le Génotype (la cause) :** C'est le **plan de construction** (l'ADN). Si le plan contient une erreur (une mutation génétique), la maison aura un défaut.
 *   **Le Phénotype (la conséquence) :** Ce sont les **défauts visibles** de la maison (par exemple : une porte de travers, un mur fragile). En médecine, ce sont les **symptômes cliniques** observés chez le patient (ex. : crises d'épilepsie, retard de développement, tonus musculaire faible).
 
-###  Quel est le rôle de PhenoGenoAI ?
+### 🤖 Quel est le rôle de PhenoGenoAI ?
 Trouver quel gène précis est responsable d'une maladie en lisant l'ADN d'un patient, c'est comme chercher une aiguille dans une botte de foin géante. 
 **PhenoGenoAI résout ce problème** : 
 1. Le médecin saisit les symptômes du patient en texte libre (ex. : *"convulsions, tonus musculaire faible"*).
@@ -22,29 +22,29 @@ Trouver quel gène précis est responsable d'une maladie en lisant l'ADN d'un pa
 
 ---
 
-##  Fonctionnalités Principales
+## 🛠️ Fonctionnalités Principales
 
-###  1. Le Workbench (Espace de Travail)
+### 🖥️ 1. Le Workbench (Espace de Travail)
 *   **Saisie intuitive :** Écrivez les symptômes en langage médical ou courant.
 *   **Surlignage IA (Explainable AI) :** L'application surligne automatiquement les mots du texte qui ont le plus influencé la décision de l'IA (grâce à une carte d'attention).
 *   **Prédictions en temps réel :** Affichage des gènes candidats (ex: *SCN1A*, *MECP2*, *BRCA1*), de leur probabilité et de liens directs vers la base de données scientifique mondiale **OMIM**.
 
-###  2. Simulateur de Signal Génomique (Live DNA Stream)
+### 🧬 2. Simulateur de Signal Génomique (Live DNA Stream)
 *   **Séquençage en direct :** Un module simule le travail d'une machine de séquençage d'ADN en temps réel, montrant les flux de lettres (`A`, `T`, `C`, `G`) défiler à l'écran, avec leur score de qualité et leur taux de couverture.
 *   **Visualisation 3D :** Un magnifique modèle d'hélice d'ADN en 3D tourne en arrière-plan (réalisé en Three.js) pour une expérience utilisateur haut de gamme.
 
-###  3. Gestion de Cohortes & Qualité
+### 📋 3. Gestion de Cohortes & Qualité
 *   **Base de Données des Cas :** Enregistrement et suivi des dossiers de patients analysés.
 *   **Contrôle Qualité automatique :** L'application vérifie si le dossier du patient contient toutes les informations requises (âge, sexe, symptômes complets) et affiche des alertes en cas de données manquantes.
 *   **Score de Cohérence :** Un algorithme calcule un score de cohérence pour valider la pertinence des gènes identifiés par rapport aux symptômes renseignés.
 
-###  4. Import & Export
+### 📥 4. Import & Export
 *   **Import CSV :** Possibilité d'importer une liste entière de patients à partir d'un simple fichier CSV.
 *   **Rapports PDF :** Génération instantanée d'un rapport de diagnostic propre au format PDF en un clic.
 
 ---
 
-##  Architecture Technique
+## 📐 Architecture Technique
 
 Le projet est divisé en deux parties principales (Full-stack) :
 
@@ -57,13 +57,13 @@ graph TD
     B -->|Génération Rapports| F[ReportLab PDF Engine]
 ```
 
-###  Frontend (L'Interface Utilisateur)
+### 💻 Frontend (L'Interface Utilisateur)
 *   **Framework :** React avec Vite (rapide et moderne).
 *   **Design & Animations :** TailwindCSS (design épuré et sombre type "cyber-médical") + Framer Motion (transitions ultra-fluides).
 *   **Graphismes 3D :** Three.js avec `@react-three/fiber` et `@react-three/drei` pour l'ADN 3D.
 *   **Langues :** Traduction complète en **Français** et **Anglais** (via `i18next`).
 
-###  Backend (Le Cerveau)
+### 🐍 Backend (Le Cerveau)
 *   **Framework :** Python avec Django et Django REST Framework (DRF) pour l'API.
 *   **Base de données :** SQLite (léger, inclus par défaut, ne nécessite aucune configuration externe).
 *   **Modèles d'IA logés dans le dossier `phenogeno_ensemble_deploy/` :**
@@ -72,7 +72,7 @@ graph TD
 
 ---
 
-##  Structure du Projet
+## 📂 Structure du Projet
 
 ```text
 PhenoGenoAI/
@@ -97,7 +97,7 @@ PhenoGenoAI/
 
 ---
 
-##  Guide de Démarrage Rapide
+## 🚀 Guide de Démarrage Rapide
 
 Suivez ces étapes simples pour lancer le projet sur votre machine.
 
@@ -107,7 +107,7 @@ Suivez ces étapes simples pour lancer le projet sur votre machine.
 
 ---
 
-###  Étape 1 : Configurer et Lancer le Backend (Serveur Python)
+### 🔌 Étape 1 : Configurer et Lancer le Backend (Serveur Python)
 
 1. Ouvrez votre terminal dans le dossier racine du projet `PhenoGenoAI`.
 2. Créez un environnement virtuel Python pour isoler les dépendances :
@@ -139,7 +139,7 @@ Suivez ces étapes simples pour lancer le projet sur votre machine.
 
 ---
 
-###  Étape 2 : Configurer et Lancer le Frontend (Interface React)
+### 🎨 Étape 2 : Configurer et Lancer le Frontend (Interface React)
 
 1. Ouvrez un **nouveau terminal** (tout en laissant tourner le serveur backend).
 2. Déplacez-vous dans le dossier `frontend` :
@@ -154,11 +154,11 @@ Suivez ces étapes simples pour lancer le projet sur votre machine.
    ```bash
    npm run dev
    ```
-   *L'application s'ouvre dans votre navigateur à l'adresse : **`http://localhost:5173/`*** 
+   *L'application s'ouvre dans votre navigateur à l'adresse : **`http://localhost:5173/`*** 🎉
 
 ---
 
-##  Documentation des API Backend
+## 📡 Documentation des API Backend
 
 Si vous souhaitez interagir directement avec l'API du serveur sans passer par l'interface web, voici les points d'accès disponibles :
 
@@ -174,7 +174,7 @@ Si vous souhaitez interagir directement avec l'API du serveur sans passer par l'
 
 ---
 
-##  Contribuer au projet
+## 🤝 Contribuer au projet
 
 1. **Forkez** le projet.
 2. Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`).
@@ -184,3 +184,4 @@ Si vous souhaitez interagir directement avec l'API du serveur sans passer par l'
 
 ---
 
+*Développé avec passion pour l'avancée de la médecine génomique. Si vous aimez ce projet, n'hésitez pas à laisser une ⭐ sur le dépôt Git !*

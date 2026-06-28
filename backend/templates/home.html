@@ -1,0 +1,217 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PhenoGenoAI Backend</title>
+    <link rel="stylesheet" href="/static/css/backend.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="brand">
+          <span class="brand-mark">PG</span>
+          <div>
+            <h1>PhenoGenoAI Backend</h1>
+            <p>Genomic prediction API status</p>
+          </div>
+        </div>
+        <div class="status">
+          <span class="dot"></span>
+          Online
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Model</h2>
+          <p class="label">Base</p>
+          <p class="value">{{ model_name }}</p>
+          <p class="label">Task</p>
+          <p class="value">{{ model_task }}</p>
+          <div class="badge">Symptoms -> Gene</div>
+        </div>
+
+        <div class="card">
+          <h2>Model Health</h2>
+          <div class="stat-grid">
+            <div>
+              <p class="label">Availability</p>
+              <p class="value">{{ health.availability }}</p>
+            </div>
+            <div>
+              <p class="label">Avg Latency</p>
+              <p class="value">{{ health.avg_latency_ms }} ms</p>
+            </div>
+            <div>
+              <p class="label">p95 Latency</p>
+              <p class="value">{{ health.p95_latency_ms }} ms</p>
+            </div>
+            <div>
+              <p class="label">Queue Depth</p>
+              <p class="value">{{ health.queue_depth }}</p>
+            </div>
+          </div>
+          <p class="label">Drift Score</p>
+          <div class="meter">
+            <span class="meter-fill" style="width: {{ health.drift_percent }}%;"></span>
+          </div>
+          <p class="note">Source: {{ health.source }}</p>
+        </div>
+
+        <div class="card">
+          <h2>Endpoints</h2>
+          <ul class="list">
+            {% for endpoint in endpoints %}
+            <li>
+              <span class="method">{{ endpoint.method }}</span>
+              <span class="path">{{ endpoint.path }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          <p class="note">Use JSON payloads with comma-separated symptoms.</p>
+        </div>
+
+        <div class="card">
+          <h2>Quick Test</h2>
+          <form class="quick-test" data-endpoint="/api/predict/">
+            <label>
+              Symptoms
+              <input type="text" name="symptoms" value="seizures, hypotonia" />
+            </label>
+            <label>
+              HPO Terms
+              <input type="text" name="hpo" value="HP:0001250" />
+            </label>
+            <button type="submit">Run Prediction</button>
+          </form>
+          <pre class="code" id="quick-test-output">Awaiting request...</pre>
+          <p class="note">Returns predicted gene + confidence + ranked list.</p>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Traffic</h2>
+          <div class="stat-grid">
+            <div>
+              <p class="label">Requests Today</p>
+              <p class="value">{{ traffic.requests_today }}</p>
+            </div>
+            <div>
+              <p class="label">Success Rate</p>
+              <p class="value">{{ traffic.success_rate }}</p>
+            </div>
+            <div>
+              <p class="label">Active Users</p>
+              <p class="value">{{ traffic.active_users }}</p>
+            </div>
+            <div>
+              <p class="label">PDF Exports</p>
+              <p class="value">{{ traffic.pdf_exports }}</p>
+            </div>
+          </div>
+          <p class="note">Source: {{ traffic.source }}</p>
+        </div>
+
+        <div class="card">
+          <h2>Metadata</h2>
+          <div class="meta">
+            <div>
+              <p class="label">Model Version</p>
+              <p class="value">{{ model_version }}</p>
+            </div>
+            <div>
+              <p class="label">API Version</p>
+              <p class="value">{{ api_version }}</p>
+            </div>
+            <div>
+              <p class="label">Environment</p>
+              <p class="value">{{ environment }}</p>
+            </div>
+            <div>
+              <p class="label">Build</p>
+              <p class="value">{{ build_id }}</p>
+            </div>
+            <div>
+              <p class="label">Uptime</p>
+              <p class="value">{{ uptime }}</p>
+            </div>
+            <div>
+              <p class="label">Last Refresh</p>
+              <p class="value">{{ last_refreshed }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Recent Activity</h2>
+          <ul class="timeline">
+            {% for entry in activity %}
+            <li>{{ entry }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Documentation</h2>
+          <div class="doc-list">
+            <div>
+              <p class="label">OpenAPI</p>
+              <p class="value">/api/schema/ (enable in DRF)</p>
+            </div>
+            <div>
+              <p class="label">Health</p>
+              <p class="value">GET /api/health/</p>
+            </div>
+            <div>
+              <p class="label">Prediction Guide</p>
+              <p class="value">POST /api/predict/</p>
+            </div>
+            <div>
+              <p class="label">Export Guide</p>
+              <p class="value">POST /api/export/</p>
+            </div>
+          </div>
+          <p class="note">Docs entries are static until schema is enabled.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>PhenoGenoAI API</span>
+        <span>Researcher mode enabled</span>
+      </footer>
+    </div>
+    <script>
+      const form = document.querySelector(".quick-test");
+      const output = document.getElementById("quick-test-output");
+
+      if (form && output) {
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          output.textContent = "Running...";
+          const endpoint = form.dataset.endpoint;
+          const symptoms = form.querySelector("[name='symptoms']").value;
+          const hpo = form.querySelector("[name='hpo']").value;
+
+          try {
+            const response = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                symptoms_text: symptoms,
+                hpo_terms: hpo,
+              }),
+            });
+            const data = await response.json();
+            output.textContent = JSON.stringify(data, null, 2);
+          } catch (error) {
+            output.textContent = "Request failed.";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
